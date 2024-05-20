@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - 2024-05-21
+## [1.0.1] - 2024-05-20
 
 ### Changed
 - Updated log timestamp format to ISO 8601 (YYYY-MM-DD) for consistency and clarity.
