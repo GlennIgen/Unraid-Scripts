@@ -21,7 +21,7 @@ get_vm_state() {
 log() {
     local level="$1"
     local message="$2"
-    echo "[$level] :: $(date +"%d/%m-%Y - %H:%M:%S") :: $message" | tee -a $LOGFILE
+    echo "[$level] :: $(date +"%Y-%m-%d - %H:%M:%S") :: $message" | tee -a $LOGFILE
 }
 
 # Function to check Docker container status
