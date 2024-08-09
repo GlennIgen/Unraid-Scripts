@@ -4,7 +4,7 @@ Welcome to the Unraid-Scripts repository! This repository contains a collection 
 
 ## Scripts Included
 
-### 1. Veeam VM and Docker Shutdown and Reboot Script
+### 1. Veeam VM and Docker Shutdown and Reboot Script (I use Veeam for backup. See https://www.veeam.com/ for more details)
 
 This script safely shuts down the Veeam VM and all running Docker containers, then schedules a server reboot. It ensures that the VM and containers are properly stopped before rebooting to prevent data loss or corruption.
 
