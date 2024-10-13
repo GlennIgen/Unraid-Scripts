@@ -10,7 +10,7 @@ VMNAME="Veeam"
 VM_RUNNING_STATE="  state.state=1"
 VM_STOPPED_STATE="  state.state=5"
 MAX_ATTEMPTS=20
-LOGFILE="/boot/logs/unraid_reboot.log"
+LOGFILE="/mnt/remotes/NAS.local_backup/unraid_logs/unraid_reboot_$(date +"%Y-%m-%d").log"
 
 # Function to get VM status
 get_vm_state() {
@@ -62,7 +62,12 @@ if [ "$VM_STATE" = "$VM_STOPPED_STATE" ]; then
     # Loop until Docker containers are stopped or MAX_ATTEMPTS is reached
     while are_docker_containers_running && [ $attempt -lt $MAX_ATTEMPTS ]; do
         log "INFO" "Attempting to stop Docker containers (attempt $((attempt + 1)))"
-        docker stop $(docker ps -q)
+        running_containers=$(docker ps -q)
+    
+        if [[ $running_containers ]]; then
+            docker stop $running_containers
+        fi
+    
         sleep 30
         attempt=$((attempt + 1))
     done

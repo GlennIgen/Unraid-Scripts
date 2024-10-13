@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2] - 2024-10-13
+
+### Changed
+- Updated the log file path to save logs on remote location.
+- Added additional checks to ensure that Docker containers are running before attempting to stop them.
+- Improved logging with clearer messages during the Docker container shutdown process.
+
 ## [1.0.1] - 2024-05-20
 
 ### Changed
