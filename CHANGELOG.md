@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5] - 2024-10-13
+
+### Changed
+- Updated `unraid_shutdown_vms.sh` and `unraid_start_vms.sh` to ensure logs always include a clear start and end separator.
+- Added `cleanup` function to log the end of the script execution, even in case of a failure.
+- Both scripts now use `trap cleanup EXIT` to guarantee the log includes a closing line, regardless of script success or failure.
+
 ## [1.0.4] - 2024-10-13
 
 ### Changed

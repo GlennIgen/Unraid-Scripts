@@ -21,6 +21,17 @@ log() {
     echo "[$level] :: $(date +"%Y-%m-%d - %H:%M:%S") :: $message" | tee -a $LOGFILE
 }
 
+# Cleanup function to ensure the log always ends with a separator line
+cleanup() {
+    log "INFO" "==========================================================="
+}
+# Ensure cleanup runs on script exit (success or failure)
+trap cleanup EXIT
+
+# Add a separator line at the beginning of the log
+log "INFO" "==========================================================="
+log "INFO" "Starting VM shutdown process..."
+
 # Function to get all running VMs
 get_running_vms() {
     virsh list --state-running --name
