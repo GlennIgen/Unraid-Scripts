@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.3] - 2024-10-13
+
+### Added
+- Added `unraid_shutdown_vms.sh` script:
+  - Allows shutting down all or specific QEMU VMs on the Unraid server.
+  - Logs all actions with timestamps.
+  - Supports argument-based control for shutting down specific VMs.
+  
+- Added `unraid_start_vms.sh` script:
+  - Allows starting all or specific QEMU VMs on the Unraid server.
+  - Logs all actions with timestamps.
+  - Supports argument-based control for starting specific VMs.
+
 ## [1.0.2] - 2024-10-13
 
 ### Changed
