@@ -2,9 +2,14 @@
 
 # =========================================
 # Made by glennigen
-# Script to start all QEMU VMs on the Unraid server, 
-# or only specified VMs if given as arguments.
+# Script to start all or specific QEMU VMs on the Unraid server.
+# If VM_NAMES is empty, all VMs will be started. If specific VMs are listed in VM_NAMES,
+# only those VMs will be started.
 # =========================================
+
+# Variable to specify which VMs to start.
+# If empty, all VMs will be started. Otherwise, specify VM names separated by spaces.
+VM_NAMES=""
 
 LOGFILE="/mnt/remotes/NAS.local_backup/unraid_logs/unraid_start_vm_$(date +"%Y-%m-%d").log"
 
@@ -33,9 +38,9 @@ start_vm() {
     fi
 }
 
-# If no arguments are passed, start all VMs
-if [ $# -eq 0 ]; then
-    log "INFO" "No specific VMs provided. Starting all VMs."
+# Check if VM_NAMES is empty
+if [ -z "$VM_NAMES" ]; then
+    log "INFO" "No specific VMs provided in VM_NAMES. Starting all VMs."
     ALL_VMS=$(get_all_vms)
     
     if [[ -z "$ALL_VMS" ]]; then
@@ -43,15 +48,16 @@ if [ $# -eq 0 ]; then
         exit 0
     fi
     
+    # Start all VMs
     for VMNAME in $ALL_VMS; do
         if [[ -n "$VMNAME" ]]; then
             start_vm "$VMNAME"
         fi
     done
 else
-    # Start only the specified VMs passed as arguments
-    for VMNAME in "$@"; do
-        log "INFO" "Starting specified VM: $VMNAME"
+    # Start only the VMs specified in VM_NAMES
+    log "INFO" "Starting specified VMs: $VM_NAMES"
+    for VMNAME in $VM_NAMES; do
         start_vm "$VMNAME"
     done
 fi

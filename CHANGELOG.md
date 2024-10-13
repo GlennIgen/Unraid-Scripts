@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.4] - 2024-10-13
+
+### Changed
+- Updated `unraid_shutdown_vms.sh` script:
+  - Added `VM_NAMES` variable to allow shutting down specific VMs.
+  - If `VM_NAMES` is empty, all running VMs will be shut down.
+  - Logs all actions with timestamps.
+
+- Updated `unraid_start_vms.sh` script:
+  - Added `VM_NAMES` variable to allow starting specific VMs.
+  - If `VM_NAMES` is empty, all defined VMs will be started.
+  - Logs all actions with timestamps.
+
 ## [1.0.3] - 2024-10-13
 
 ### Added
